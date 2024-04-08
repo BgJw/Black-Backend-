@@ -9,6 +9,6 @@ async function bootstrap() {
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], // Разрешенные методы
     allowedHeaders: ['Content-Type', 'Authorization'], // Разрешенные заголовки
   });
-  await app.listen(5000);
+  await app.listen(process.env.PORT || 5000);
 }
 bootstrap();
