@@ -31,7 +31,10 @@ export class MonthController {
   }
   
   @Get(':department/:month/:year')
-    async checkMonthExists(@Param('month') month: string, @Param('year') year: number, @Param('department') department: string): Promise<Month> {
+    async checkMonthExists(
+      @Param('month') month: string, 
+      @Param('year') year: number, 
+      @Param('department') department: string): Promise<Month> {
       try {
         const res = await this.monthService.findMonthByNameAndYear(department, month, year);
         if (!res) {

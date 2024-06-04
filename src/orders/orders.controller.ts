@@ -16,9 +16,12 @@ export interface ApiResponse {
     getAll() {
       return this.ordersModel.getAll();
     }
-    @Get(':id')
-    getOne(@Param('id') id: string) {
-      return this.ordersModel.getOne(id);
+    @Get(':day/:month/:year/:department')
+    getOne(@Param('day') day: number, 
+          @Param('month') month: number, 
+          @Param('year') year: number,
+          @Param('department') department: string) {
+      return this.ordersModel.getOne(day, month, year, department);
     }
     @Post()
     async createOrder(@Body() orderdata: Orders ): Promise<ApiResponse> {

@@ -19,8 +19,13 @@ export class OrdersService {
     getAll(): Promise<Orders[]> {
         return this.ordersModel.find().exec();
     }
-    getOne(id: string): Promise<Orders> {
-        return this.ordersModel.findById(id).exec();
+    getOne(day: number, month: number, year: number, department: string): Promise<Orders> {
+        try {
+            return this.ordersModel.findOne({ department, month, year, day }).exec();
+            
+          } catch (error) {
+            return error
+          }
     }
     async createOrder(newOrder: Orders): Promise<ApiResponse> {
         const {day, month, year, department, orders } = newOrder;
