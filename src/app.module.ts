@@ -4,6 +4,7 @@ import { MonthModule } from './month/month.module';
 import { OrdersModules } from './orders/orders.module';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
+import { DataHubModule } from './dataHub/datahub.module';
 
 @Module({
   imports: [
@@ -11,7 +12,8 @@ import { AuthModule } from './auth/auth.module';
     MonthModule,
     OrdersModules,
     UserModule,
-    AuthModule 
+    AuthModule,
+    DataHubModule 
   ],
   controllers: [],
   providers: [],
