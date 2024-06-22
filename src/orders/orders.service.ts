@@ -2,14 +2,12 @@ import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model, Types } from "mongoose";
 import { Orders, IOrders } from "./schema/orders.schema";
-import { Month } from "src/month/schema/month.schema";
 import { ApiResponse } from "./orders.controller";
 
 @Injectable()
 export class OrdersService {
     constructor(
-        @InjectModel(Orders.name) private ordersModel: Model<Orders>,
-        @InjectModel(Month.name) private monthModel: Model<Month>
+        @InjectModel(Orders.name) private ordersModel: Model<Orders>
     ) { }
 
     async findDayMonthAndYear(day: number, month: number, year: number): Promise<Orders | null> {
