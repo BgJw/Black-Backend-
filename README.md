@@ -22,7 +22,7 @@ To clone and run this project, follow these steps:
 
    ```sh
    git clone https://github.com/bgJw/Black-Backend-.git
-   cd server
+   cd your_folder
    ```
 
 2. Install dependencies:
