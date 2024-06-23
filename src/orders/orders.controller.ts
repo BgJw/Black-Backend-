@@ -1,6 +1,7 @@
 import { BadRequestException, Body, Controller, Delete, Get, NotFoundException, Param, Patch, Post } from "@nestjs/common";
 import { OrdersService } from "./orders.service";
 import { Orders } from "./schema/orders.schema";
+import { Types } from "mongoose";
 
 export interface ApiResponse {
     success: boolean;
@@ -22,6 +23,15 @@ export interface ApiResponse {
           @Param('department') department: string) {
       return this.ordersModel.getOne(day, month, year, department);
     }
+    @Get(':day/:month/:year/:department/:_id')
+    getOrderById(@Param('day') day: number, 
+          @Param('month') month: number, 
+          @Param('year') year: number,
+          @Param('department') department: string,
+          @Param('_id') _id: Types.ObjectId,
+        ) {
+      return this.ordersModel.getOrderById(day, month, year, department, _id );
+    } 
     @Post()
     async createOrder(@Body() orderdata: Orders ): Promise<ApiResponse> {
       try {

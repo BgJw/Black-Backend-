@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document, Schema as MongooseSchema } from 'mongoose';
+import { Document, Schema as MongooseSchema, Types } from 'mongoose';
 
 
 export enum payMetod {
@@ -23,7 +23,8 @@ export interface IOrders {
   cardOrCash: payMetod,
   weight: string,
   whoMadeIt: string,
-  hour: number
+  hour: number,
+  _id: Types.ObjectId,
 }
 
 @Schema()
