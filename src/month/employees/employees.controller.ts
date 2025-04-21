@@ -52,14 +52,9 @@ export class EmployeeController {
       }
   }
   @Delete(':monthId/:employeeId')
-  async removeEmployee(
-    @Param('monthId') monthId: string,
-    @Param('employeeId') employeeId: string,
-  ) {
-    
+  async removeEmployee( @Param('monthId') monthId: string, @Param('employeeId') employeeId: string,) {
     try {
-      const result = await this.employeeService.removeEmployee(monthId, employeeId);
-      
+      const result = await this.employeeService.removeEmployee(monthId, employeeId); 
       if (!result) {
         throw new NotFoundException('Employee not found');
       }
@@ -68,6 +63,7 @@ export class EmployeeController {
       throw new BadRequestException(`Failed to remove employee: ${error.message}`);
     }
   }  
+
   // тут порабоатть 
   
   

@@ -49,10 +49,8 @@ export class OrdersService {
 
     async createOrder(newOrder: Orders): Promise<ApiResponse> {
         const { day, month, year, department, orders } = newOrder;
-
         try {
-            let findDay = await this.ordersModel.findOne({ day, month, year, department }).exec();
-            
+            let findDay = await this.ordersModel.findOne({ day, month, year, department }).exec();           
             if (!findDay) {
                 findDay = new this.ordersModel({
                     day,
@@ -62,26 +60,19 @@ export class OrdersService {
                     _id: new Types.ObjectId,
                     orders: orders.map(order => ({
                         ...order,
-                        _id: new Types.ObjectId,
-                    })),
+                        _id: new Types.ObjectId, })),
                 });
             } else {
                 findDay.orders.push(...orders.map(order => ({
-                    ...order,
-                    _id: new Types.ObjectId,
-                })));
-            }
-
+                    ...order, _id: new Types.ObjectId,
+                })));}
             await findDay.save();
-
             return { success: true, message: 'Successfully added new order' };
-
         } catch (error) {
             return { success: false, message: String(error) };
-        }
-    }
+        }}
 
     removeOrder(orderId: string) {
-        return this.ordersModel.findByIdAndRemove(orderId).exec();
+        return this.ordersModel.findByIdAndDelete(orderId).exec();
     }
 }

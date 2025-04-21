@@ -31,16 +31,12 @@ export interface IOrders {
 export class Orders extends Document {
   @Prop()
   day: number;
-
   @Prop()
   month: number;
-
   @Prop()
   year: number;
-  
   @Prop()
   department: string;
-
   @Prop()
   orders: IOrders[];    
 }

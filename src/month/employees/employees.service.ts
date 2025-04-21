@@ -116,24 +116,18 @@ export class EmployeeService {
   }
   async removeEmployee(monthId: string, employeeId: string) {
     try {
-      const listEmployee = await this.findEmployeesByMonth(monthId);
-      
+      const listEmployee = await this.findEmployeesByMonth(monthId);      
       if (!listEmployee) {
         throw new Error(EmployeeService.ERR_EMPLOYEE_NOT_FOUND);
       }
-  
-      const updatedEmployees = listEmployee.filter((employee) => !employee._id.equals(new Types.ObjectId(employeeId)));
-      
+      const updatedEmployees = listEmployee.filter((employee) => !new Types.ObjectId(String(employee._id)).equals(new Types.ObjectId(employeeId)));
       await this.monthModel.updateOne(
         { _id: monthId },
-        { $set: { employees: updatedEmployees } }
-      );
-  
+        { $set: { employees: updatedEmployees }});
       return { success: true, message: 'Employee removed successfully' };
     } catch (error) {
       console.error('Failed to remove employee:', error.message);
       return { success: false, message: 'Failed to remove employee' };
-    }
-  }
+    }}
   
 }

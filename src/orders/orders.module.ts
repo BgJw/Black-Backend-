@@ -8,7 +8,7 @@ import { Month, MonthSchema } from "src/month/schema/month.schema";
 
 @Module({
     imports: [ MongooseModule.forFeature([{ name: Orders.name, schema: OrdersSchema }, { name: Month.name, schema: MonthSchema }])],
-    controllers: [OrdersController ],
+    controllers: [OrdersController],
     providers: [OrdersService],
 
 })

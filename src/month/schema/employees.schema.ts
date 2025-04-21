@@ -18,16 +18,12 @@ export class WorkTime {
 export class Employee extends Document {
   @Prop()
   name: string;
-
   @Prop()
-  position: string;
-  
+  position: string; 
   @Prop()
   hours_worked: number;
-
   @Prop({type: [WorkTime], default: []})
   work_time: WorkTime[];
-
 }
 
 export const EmployeeSchema = SchemaFactory.createForClass(Employee);
