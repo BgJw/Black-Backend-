@@ -44,6 +44,7 @@ export interface ApiResponse {
         throw new BadRequestException(`Failed to add new order: ${error.message}`);
       }
     }
+    
     // removeOrder(@Param('orderId') orderId: string) {
     //     return this.ordersModel.removeOrder(orderId);
     // }

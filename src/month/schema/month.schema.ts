@@ -17,9 +17,6 @@ export class Month extends Document {
   
   @Prop([Employee])
   employees: Employee[];
-
-  @Prop([Orders])
-  orders: Orders[];
 }
 
 export const MonthSchema = SchemaFactory.createForClass(Month);

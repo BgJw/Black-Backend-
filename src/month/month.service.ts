@@ -40,7 +40,7 @@ export class MonthService {
 
 
     } else {
-      return { success: false, message: 'duplicate' };
+      return { success: false, message: 'duplicate month' };
     }
   }
 
